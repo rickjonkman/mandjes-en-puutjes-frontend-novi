@@ -1,0 +1,39 @@
+@import 'src/scss/global/page-sections';
+@import "src/scss/components/form-elements";
+@import "src/scss/global/media";
+@import "src/scss/global/colors";
+
+.main__login-form {
+  margin-top: 4rem;
+  padding: 2rem;
+  background-color: $blue-light;
+  border: 2px solid $blue;
+  border-radius: 4px;
+
+  .form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    //align-items: center;
+  }
+
+}
+
+.login-form__input-fields {
+  margin: 1rem 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &--field {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.go-back {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem;
+}

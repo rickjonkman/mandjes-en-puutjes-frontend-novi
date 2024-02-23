@@ -1,0 +1,114 @@
+
+@import "breakpoints";
+@import "typography";
+
+
+a, p, span {
+  @media (min-width: $breakpoint-smallest) {
+    font-size: $small-a;
+  }
+
+  @media (min-width: $breakpoint-phone) {
+    font-size: $regular-a;
+  }
+
+  @media (min-width: $breakpoint-tablet) {
+    font-size: $big-a;
+  }
+
+  @media (min-width: $breakpoint-largest) {
+    font-size: $large-a;
+  }
+}
+
+h1 {
+  @media (min-width: $breakpoint-smallest) {
+    font-size: $smaller-1;
+  }
+
+  @media (min-width: $breakpoint-phone) {
+    font-size: $small-1;
+  }
+
+  @media (min-width: $breakpoint-tablet) {
+    font-size: $regular-1;
+  }
+
+  @media (min-width: $breakpoint-desktop-small) {
+    font-size: $big-1;
+  }
+
+  @media (min-width: $breakpoint-desktop-regular) {
+    font-size: $bigger-1;
+  }
+
+  @media (min-width: $breakpoint-largest) {
+    font-size: $large-1;
+  }
+}
+
+h2 {
+  @media (min-width: $breakpoint-smallest) {
+    font-size: $-smaller-2;
+  }
+
+  @media (min-width: $breakpoint-phone) {
+    font-size: $small-2;
+  }
+
+  @media (min-width: $breakpoint-tablet) {
+    font-size: $regular-2;
+  }
+
+  @media (min-width: $breakpoint-desktop-small) {
+    font-size: $big-2;
+  }
+
+  @media (min-width: $breakpoint-largest) {
+    font-size: $large-2;
+  }
+}
+
+.nav-bar__landing-page--logo > img,
+.nav-bar__main-page--logo > img {
+
+  @media (min-width: $breakpoint-smallest) {
+    width: 10rem;
+  }
+
+  @media (min-width: $breakpoint-phone) {
+    width: 14rem;
+  }
+
+  @media (min-width: $breakpoint-tablet) {
+    width: 16rem;
+  }
+
+  @media (min-width: $breakpoint-desktop-regular) {
+    width: 20rem;
+  }
+
+  @media (min-width: $breakpoint-largest) {
+    width: 22rem;
+  }
+}
+
+@media screen and (min-width: $breakpoint-tablet) {
+  .register-login-form {
+    min-width: 25rem;
+  }
+}
+
+@media screen and (min-width: $breakpoint-desktop-small) {
+  .register-login-form {
+    min-width: 40rem;
+  }
+}
+
+@media screen and (min-width: $breakpoint-desktop-regular) {
+  .register-login-form {
+    min-width: 48rem;
+  }
+}
+
+

@@ -1,0 +1,62 @@
+
+@import "/src/scss/global/colors";
+@import "src/scss/global/transitions";
+
+@mixin button-generic {
+  padding: 0.6rem;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submit-button {
+  @include button-generic;
+  background-color: $blue;
+  color: $white;
+
+  &:hover {
+    border: 1px solid $blue-light;
+  }
+
+}
+
+.cta-button {
+  @include button-generic;
+  background-color: $orange-main;
+  border: 2px solid transparent;
+  color: $white;
+  width: 30%;
+
+  &:hover {
+    border: 2px solid $orange-80;
+  }
+}
+
+.button__go-back {
+  position: absolute;
+  background: $blue;
+  color: $white;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    padding: 0 3.4rem;
+    border: 1px solid $blue;
+    border-radius: 16px;
+    transition: $transition-go-back;
+
+    &::after {
+      position: relative;
+      content: 'Terug';
+      left: 1rem;
+    }
+
+  }
+
+}

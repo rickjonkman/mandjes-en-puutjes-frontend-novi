@@ -1,0 +1,67 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500;700;900&display=swap');
+
+////// Font Family //////
+$oswald: 'Oswald', sans-serif;
+$roboto: 'Roboto', sans-serif;
+
+////// Font Sizes //////
+
+// Paragraph
+$small-p: 0.8rem;
+$regular-p: 1rem;
+$big-p: 1.2rem;
+$large-p: 1.4rem;
+
+// Anchor
+$small-a: 0.8rem;
+$regular-a: 1rem;
+$big-a: 1.2rem;
+$large-a: 1.4rem;
+
+// Title H1
+$smaller-1: 2rem;
+$small-1: 3rem;
+$regular-1: 4rem;
+$big-1: 5rem;
+$bigger-1: 8rem;
+$large-1: 10rem;
+
+// Subtitle H2
+$-smaller-2: 1.5rem;
+$small-2: 2rem;
+$regular-2: 3rem;
+$big-2: 5rem;
+$bigger-2: 6rem;
+$large-2: 7rem;
+
+// Sub-subtitle H3
+$-smaller-3: 1rem;
+$small-3: 1.4rem;
+$regular-3: 2rem;
+$big-3: 2.5rem;
+$bigger-3: 3rem;
+$large-3: 5rem;
+
+// Sub-sub-subtitle H4
+$-smaller-4: 1rem;
+$small-4: 1.2rem;
+$regular-4: 1.8rem;
+$big-4: 2.5rem;
+$bigger-4: 3rem;
+$large-4: 5rem;
+
+////// Mixin //////
+
+@mixin nav-links {
+  font-family: $roboto;
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, button {
+  font-family: $oswald;
+}
+
+p, span, a, input, label {
+  font-family: $roboto;
+}

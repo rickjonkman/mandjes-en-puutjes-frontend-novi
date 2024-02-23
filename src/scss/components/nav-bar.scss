@@ -1,0 +1,38 @@
+@import "src/scss/global/breakpoints";
+@import "../global/typography";
+@import "src/scss/components/nav-elements";
+@import "src/scss/global/page-sections";
+@import "src/scss/global/colors";
+
+.nav-bar__main-page {
+  background-color: $gray-10;
+  padding: 1rem;
+  border-radius: 4px;
+
+  .nav-bar__main-page--links ul {
+    display: flex;
+
+  }
+
+  .nav-bar__main-page--links ul li {
+    display: inline-block;
+    padding: .2rem .6rem;
+  }
+
+  .nav-bar__main-page--links ul li a {
+    color: $white;
+    text-decoration: none;
+  }
+}
+
+.nav-bar__landing-page {
+  @include nav-bar--generic
+}
+
+.nav-bar__links-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+}

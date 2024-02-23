@@ -1,0 +1,20 @@
+@import "/src/scss/components/buttons";
+@import "/src/scss/global/page-sections";
+@import "src/scss/global/media";
+
+.hero {
+  margin: 4rem 0;
+
+  &--title-section {
+    padding: 2rem;
+    min-height: 10rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .hero--title-section > h1 {
+    margin: 2rem 0;
+  }
+
+}

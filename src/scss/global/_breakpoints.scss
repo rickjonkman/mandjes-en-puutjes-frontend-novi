@@ -1,0 +1,35 @@
+
+
+////// BREAKPOINTS //////
+$breakpoint-smallest: 300px;
+$breakpoint-phone: 500px;
+$breakpoint-tablet: 700px;
+$breakpoint-desktop-small: 1000px;
+$breakpoint-desktop-regular: 1200px;
+$breakpoint-largest: 1400px;
+
+
+////// MEDIA //////
+@media (min-width: $breakpoint-smallest) {
+
+}
+
+@media (min-width: $breakpoint-phone) {
+
+}
+
+@media (min-width: $breakpoint-tablet) {
+
+}
+
+@media (min-width: $breakpoint-desktop-small) {
+
+}
+
+@media (min-width: $breakpoint-desktop-regular) {
+
+}
+
+@media (min-width: $breakpoint-largest) {
+
+}
