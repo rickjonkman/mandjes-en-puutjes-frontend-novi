@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {getInnerWidth} from "../../../helpers/getInnerWidth.js";
 import NavBarContent from "../immutable/NavBarContent.jsx";
 import HamburgerMenu from "../immutable/HamburgerMenu.jsx";
-import '/src/scss/components/nav-bar.scss';
+import '/src/scss/components/nav--nav-bar.scss';
 
 const NavBar = () => {
 
@@ -41,7 +41,11 @@ const NavBar = () => {
                 hamMenu={showHamMenu}
                 setHamMenu={setShowHamMenu}
             />
-            : <HamburgerMenu pathname={pathname} showHamMenu={showHamMenu} />
+            : <HamburgerMenu
+                pathname={pathname}
+                showHamMenu={showHamMenu}
+                setShowHamMenu={setShowHamMenu}
+            />
 
     );
 };

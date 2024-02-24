@@ -8,14 +8,12 @@ import DashboardPage from "./pages/personal-pages/DashboardPage.jsx";
 import ProfilePage from "./pages/personal-pages/ProfilePage.jsx";
 import GroceriesMain from "./pages/groceries-pages/GroceriesMain.jsx";
 import GroceriesShoppingMode from "./pages/groceries-pages/GroceriesShoppingMode.jsx";
-import GroceriesLists from "./pages/groceries-pages/GroceriesLists.jsx";
+import GroceriesListsPage from "./pages/groceries-pages/GroceriesListsPage.jsx";
 import RecipesAll from "./pages/recipes-pages/RecipesAll.jsx";
 import RecipePage from "./pages/recipes-pages/RecipePage.jsx";
 import RecipeSurprise from "./pages/recipes-pages/RecipeSurprise.jsx";
+import RecipesMain from "./pages/recipes-pages/RecipesMain.jsx";
 
-function RecipesMain() {
-  return null;
-}
 
 function App() {
 
@@ -30,9 +28,9 @@ function App() {
         <Route path="/personal/dashboard" element={<DashboardPage />} />
         <Route path="/personal/profile" element={<ProfilePage />} />
 
-        <Route path="/groceries/main" elegit ment={<GroceriesMain />} />
+        <Route path="/groceries/main" element={<GroceriesMain />} />
         <Route path="/groceries/shopping-mode" element={<GroceriesShoppingMode />} />
-        <Route path="/groceries/lists" element={<GroceriesLists />} />
+        <Route path="/groceries/lists" element={<GroceriesListsPage />} />
 
         <Route path="/recipes/main" element={<RecipesMain />} />
         <Route path="/recipes/all" element={<RecipesAll />} />

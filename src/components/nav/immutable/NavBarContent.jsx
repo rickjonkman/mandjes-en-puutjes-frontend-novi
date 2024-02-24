@@ -2,14 +2,13 @@ import {checkPathname} from "../../../helpers/checkPathname.js";
 import NavLogo from "./NavLogo.jsx";
 import NavBarLinks from "./NavBarLinks.jsx";
 import HamIcon from "./HamIcon.jsx";
-import '/src/scss/components/nav-bar.scss';
+import '/src/scss/components/nav--nav-bar.scss';
 
-const NavBarContent = ({pathname, navLinks, hamIcon, setHamMenu, hamMenu}) => {
+const NavBarContent = ({pathname, navLinks, hamIcon, setHamMenu, hamMenu }) => {
 
 
     return (
         <nav className={`nav-bar__${checkPathname(pathname)}`}>
-            <div className="transition-effect"></div>
 
             <div className="nav-bar__links-section">
                 <div className={`nav-bar__${checkPathname(pathname)}--logo`}>
@@ -30,13 +29,6 @@ const NavBarContent = ({pathname, navLinks, hamIcon, setHamMenu, hamMenu}) => {
                 {
                     hamIcon &&
                     <HamIcon hamClickHandler={() => setHamMenu(!hamMenu)}/>
-                }
-
-
-                {
-                    pathname !== "/" && <div className={`nav-bar__${checkPathname(pathname)}--user-avatar`}>
-                        {/*<NavAvatar />*/}
-                    </div>
                 }
             </div>
         </nav>

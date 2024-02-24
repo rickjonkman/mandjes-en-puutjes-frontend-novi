@@ -1,4 +1,4 @@
-
+@import "colors";
 
 @mixin page-outer-container {
   width: 100vw;
@@ -25,9 +25,19 @@
 }
 
 .header {
-  @include page-section-column
+  @include page-section-column;
 }
 
 .main {
-  @include page-section-column
+  @include page-section-column;
+}
+
+.footer {
+  @include page-outer-container;
+  background-color: $gray-10;
+  margin-top: 2rem;
+
+  > h3 {
+    color: $white;
+  }
 }

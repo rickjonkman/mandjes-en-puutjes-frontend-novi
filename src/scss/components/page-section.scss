@@ -1,0 +1,19 @@
+@import 'src/scss/global/colors';
+
+.page-title--class {
+  background-image: url("/src/assets/images/title-img.png");
+  background-size: cover;
+  background-color: $orange-main;
+  min-height: 12rem;
+  margin: 2rem 0;
+  padding: 1rem;
+  border: 2px solid $orange-main;
+  box-shadow: rgba(147, 177, 166, 0.16) 0px 3px 6px, rgba(147, 177, 166, 0.23) 1px 3px 6px;
+  border-radius: 4px;
+  display: flex;
+  align-items: flex-end;
+
+  > h1 {
+    color: $white;
+  }
+}

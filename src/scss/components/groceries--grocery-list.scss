@@ -1,0 +1,29 @@
+
+.grocery-list__container {
+
+  > ul {
+    display: flex;
+    flex-direction: column;
+  }
+
+  > ul > li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+}
+
+.grocery-list__item--icon-section {
+
+  div.groceries-recent__icons {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  div.groceries-current__icons {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+}

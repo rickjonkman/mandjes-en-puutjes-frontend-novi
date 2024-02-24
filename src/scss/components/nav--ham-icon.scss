@@ -1,0 +1,74 @@
+@import "src/scss/global/colors";
+@import "src/scss/global/transitions";
+
+$bar-width: 40px;
+$bar-height: 4px;
+
+.nav-bar__ham-button {
+  margin-right: 2rem;
+  width: 4rem;
+  height: 4rem;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.hamburger-icon--closed, .hamburger-icon--open {
+  background-color: $white;
+  width: $bar-width;
+  height: $bar-height;
+  position: relative;
+  transition: $transition-hamburger;
+
+  &::after, &::before {
+    background-color: $white;
+    display: block;
+    position: absolute;
+    content: "";
+    width: $bar-width;
+    height: $bar-height;
+    transition: $transition-hamburger-bef-aft;
+  }
+
+  &::before {
+    left: 0;
+    top: -12px;
+  }
+
+  &::after {
+    left: 0;
+    bottom: -12px;
+  }
+
+}
+
+
+.ham-container--closed {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  padding: 20px 0;
+}
+
+.ham-container--open {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  padding: 20px 0;
+
+  &:hover .hamburger-icon--open {
+    background-color: transparent;
+  }
+
+  &:hover .hamburger-icon--open::before {
+    transform: rotate(45deg);
+    top: 0;
+  }
+
+  &:hover .hamburger-icon--open::after {
+    transform: rotate(-45deg);
+    bottom: 0;
+  }
+}

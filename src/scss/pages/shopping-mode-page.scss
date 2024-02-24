@@ -1,0 +1,13 @@
+@import "src/scss/global/colors";
+
+@import "../components/groceries--grocery-list";
+@import "../components/groceries--nothing-found";
+
+.shopping-mode__section {
+  background-color: $gray-70;
+  border: 1px solid $gray-40;
+  box-shadow: rgba(147, 177, 166, 0.16) 0px 3px 6px, rgba(147, 177, 166, 0.23) 1px 3px 6px;
+  border-radius: 8px;
+  display: flex;
+  padding: 1rem;
+}

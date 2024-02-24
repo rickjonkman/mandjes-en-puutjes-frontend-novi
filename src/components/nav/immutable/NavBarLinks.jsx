@@ -1,6 +1,6 @@
 import {pagesLandingPage, pagesMain} from "../../../constants/navBarLinks.js";
 import NavLinkItem from "./NavLinkItem.jsx";
-import '/src/scss/components/nav-bar.scss';
+import '/src/scss/components/nav--nav-bar.scss';
 
 const NavBarLinks = ({ pathname }) => {
 

@@ -1,6 +1,6 @@
 @import "src/scss/global/breakpoints";
 @import "../global/typography";
-@import "src/scss/components/nav-elements";
+@import "nav--nav-elements";
 @import "src/scss/global/page-sections";
 @import "src/scss/global/colors";
 
@@ -8,10 +8,23 @@
   background-color: $gray-10;
   padding: 1rem;
   border-radius: 4px;
+  box-shadow: rgba(147, 177, 166, 0.16) 0px 3px 6px, rgba(147, 177, 166, 0.23) 1px 3px 6px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 
-  .nav-bar__main-page--links ul {
+  .nav-bar__links-section {
+    width: 100%;
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+  }
 
+  .nav-bar__links-section ul {
+    display: flex;
+    align-items: center;
   }
 
   .nav-bar__main-page--links ul li {
@@ -22,17 +35,10 @@
   .nav-bar__main-page--links ul li a {
     color: $white;
     text-decoration: none;
+    font-size: 1rem;
   }
 }
 
 .nav-bar__landing-page {
   @include nav-bar--generic
-}
-
-.nav-bar__links-section {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 1rem;
 }

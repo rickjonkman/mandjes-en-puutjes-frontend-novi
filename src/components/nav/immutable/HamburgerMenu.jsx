@@ -1,8 +1,10 @@
 import {checkPathname} from "../../../helpers/checkPathname.js";
 import NavLinksHamburger from "./NavLinksHamburger.jsx";
 import NavLogo from "./NavLogo.jsx";
+import HamIcon from "./HamIcon.jsx";
+import '/src/scss/components/nav--nav-bar.scss';
 
-const HamburgerMenu = ({ pathname, showHamMenu }) => {
+const HamburgerMenu = ({ pathname, setShowHamMenu, showHamMenu }) => {
 
 
 
@@ -14,10 +16,10 @@ const HamburgerMenu = ({ pathname, showHamMenu }) => {
                     <NavLogo pathname={pathname}/>
                 </div>
 
-                {/*<HamIcon*/}
-                {/*    hamClickHandler={() => setShowHamMenu(!showHamMenu)}*/}
-                {/*    hamOpen={showHamMenu}*/}
-                {/*/>*/}
+                <HamIcon
+                    hamOpen={showHamMenu}
+                    hamClickHandler={() => setShowHamMenu(!showHamMenu)}
+                />
             </div>
 
             <div className="ham-open__nav-links">
@@ -27,8 +29,6 @@ const HamburgerMenu = ({ pathname, showHamMenu }) => {
                 }
 
             </div>
-            <div className="transition-effect"></div>
-
 
         </nav>
     );

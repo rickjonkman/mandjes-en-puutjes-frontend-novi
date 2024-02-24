@@ -3,7 +3,7 @@ import {pagesHamOpen} from "../../../constants/navLinksHamMenu.js";
 
 const NavLinksHamburger = ({ pathname, hamOpen }) => {
     return (
-        <ul className="nav-unordered-list">
+        <ul className="nav-unordered-list__ham-open">
             {
                 (pathname !== '/' && hamOpen === true) &&
                 pagesHamOpen.map((link) => (
