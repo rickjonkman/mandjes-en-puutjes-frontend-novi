@@ -1,0 +1,15 @@
+@import "src/scss/global/colors";
+
+.harmonica--data {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.data--field {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: .4rem 2rem;
+  background-color: $orange-80;
+}

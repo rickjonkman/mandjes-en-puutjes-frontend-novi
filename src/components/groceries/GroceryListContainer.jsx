@@ -1,35 +1,26 @@
-
-import GroceryListItem from "./GroceryListItem.jsx";
-import GroceryList from "./GroceryList.jsx";
-import {useContext, useState} from "react";
+import {useContext} from "react";
 import {GroceriesContext} from "../../context/GroceriesContext.jsx";
-import GroceriesRecentIcons from "./GroceriesRecentIcons.jsx";
-import GroceriesCurrentIcons from "./GroceriesCurrentIcons.jsx";
-import NoListsFound from "./NoListsFound.jsx";
+import GroceryList from "./GroceryList.jsx";
+import GroceryListItem from "./GroceryListItem.jsx";
 
 
 const GroceryListContainer = () => {
 
-    const {recentShoppingLists} = useContext(GroceriesContext);
-    const {pathname} = location;
+    const { recentShoppingLists } = useContext(GroceriesContext);
 
     return (
         <div className="grocery-list__container">
             {
-                (recentShoppingLists) ?
                 recentShoppingLists.map((list) => (
-                    <GroceryList key={list.id}>
+                    <GroceryList key={list.id} >
+                        <h2>{list.creationDate}</h2>
                         {
-                            list.map((item) => (
-                                <GroceryListItem key={item.id} grocery={item.groceryName}>
-                                    { pathname === '/groceries/lists' && <GroceriesRecentIcons /> }
-                                    { pathname === '/groceries/shopping-mode' && <GroceriesCurrentIcons /> }
-                                </GroceryListItem>
+                            list.groceries.map((item, index) => (
+                                <GroceryListItem key={index} grocery={item.grocery} />
                             ))
                         }
                     </GroceryList>
-                )) : <NoListsFound pathname={pathname} />
-
+                ))
             }
         </div>
     );

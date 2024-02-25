@@ -1,47 +1,46 @@
-import useFetch from "../../hooks/UseFetch.jsx";
-import {useContext, useEffect, useState} from "react";
-import {GroceriesContext} from "../../context/GroceriesContext.jsx";
+
+import {useEffect, useState} from "react";
 import RecipeThumbnail from "./RecipeThumbnail.jsx";
+import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 
 const AllRecipesContainer = () => {
 
-    const { sendRequest } = useFetch();
-    const { headerObject } = useContext(GroceriesContext);
-
-    const [recipeThumbnails, setRecipeThumbnails] = useState([
-        {
-            id: 0,
-            recipeName: '',
-            servings: 0,
-            prepTime: 0,
-            tags: [],
-        }
-    ]);
+    const navigate = useNavigate();
+    const fetchAllRecipesURL = 'http://localhost:8080/api/recipes/open/get-all';
+    const [thumbnails, setThumbnails] = useState([]);
 
     useEffect(() => {
-        async function fetchRecipeThumbnails() {
-            const response = await sendRequest(headerObject);
-            response.data.map((field) => {
-                setRecipeThumbnails({
-                    id: field.id,
-                    recipeName: field.recipeName,
-                    servings: field.servings,
-                    prepTime: field.prepTime,
-                    tags: field.tags,
-                })
-            })
-        }
+        void fetchAllRecipes();
     }, []);
 
+    async function fetchAllRecipes() {
+
+        try {
+            const response = await axios.get(fetchAllRecipesURL);
+            setThumbnails(response.data)
+
+        } catch (e) {
+            console.error(e);
+        }
+    }
+    console.log(thumbnails)
 
     return (
         <div className="all-recipes__grid">
             {
-                recipeThumbnails.map((recipe) => (
-                    <RecipeThumbnail key={recipe.id} title={recipe.recipeName} tags={recipe.tags} />
+                thumbnails.map((thumbnail) => (
+                    <RecipeThumbnail
+                        key={thumbnail.id}
+                        title={thumbnail.recipeName}
+                        prepTime={thumbnail.prepTime}
+                        image={thumbnail.imageFile}
+                        buttonClickHandler={() => navigate(`/recipes/${thumbnail.id}`)}
+                    />
                 ))
             }
+
         </div>
     );
 };

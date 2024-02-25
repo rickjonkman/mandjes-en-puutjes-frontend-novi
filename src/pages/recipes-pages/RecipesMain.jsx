@@ -4,7 +4,6 @@ import Header from "../../components/page-sections/Header.jsx";
 import Main from "../../components/page-sections/Main.jsx";
 import PageTitle from "../../components/page-title/PageTitle.jsx";
 import BlockItem from "../../components/block-items/BlockItem.jsx";
-import Button from "../../components/buttons/mutable/Button.jsx";
 import BlockGrid from "../../components/block-items/BlockGrid.jsx";
 import {recipeMainItems} from "../../constants/main-page--items/recipeMainItems.js";
 import Footer from "../../components/page-sections/Footer.jsx";
@@ -35,9 +34,9 @@ const RecipesMain = () => {
                                     key={item.id}
                                     subject={item.subject}
                                     blockTitle={item.title}
-                                    blockSubtitle={item.subTitle}>
-                                    <Button buttonText={item.buttonText} buttonType="button"  />
-                                </BlockItem>
+                                    blockSubtitle={item.subTitle}
+                                    buttonText={item.buttonText}
+                                />
                             ))
                         }
                     </BlockGrid>

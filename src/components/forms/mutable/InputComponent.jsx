@@ -1,9 +1,9 @@
 
-const InputComponent = ({ inputClass, inputLabel, inputType, inputName, inputValue, register, validationRules, errors }) => {
+const InputComponent = ({ inputContainerClass, inputClass, inputLabel, inputType, inputName, inputValue, register, validationRules, errors }) => {
 
 
     return (
-        <div className="input-class">
+        <div className={inputContainerClass}>
             <label htmlFor={inputClass}>{inputLabel}</label>
             <input
                 type={inputType}

@@ -32,9 +32,10 @@ const DashboardPage = () => {
                                     key={item.id}
                                     subject={item.subject}
                                     blockTitle={item.title}
-                                    blockSubtitle={item.subTitle}>
-                                    <Button buttonText={item.buttonText} buttonType="button"  />
-                                </BlockItem>
+                                    blockSubtitle={item.subTitle}
+                                    buttonText={item.buttonText}
+                                />
+
                             ))
                         }
                     </BlockGrid>

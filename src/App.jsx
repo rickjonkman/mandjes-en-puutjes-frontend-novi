@@ -11,8 +11,8 @@ import GroceriesShoppingMode from "./pages/groceries-pages/GroceriesShoppingMode
 import GroceriesListsPage from "./pages/groceries-pages/GroceriesListsPage.jsx";
 import RecipesAll from "./pages/recipes-pages/RecipesAll.jsx";
 import RecipePage from "./pages/recipes-pages/RecipePage.jsx";
-import RecipeSurprise from "./pages/recipes-pages/RecipeSurprise.jsx";
 import RecipesMain from "./pages/recipes-pages/RecipesMain.jsx";
+import RecipeNew from "./pages/recipes-pages/RecipeNew.jsx";
 
 
 function App() {
@@ -35,7 +35,7 @@ function App() {
         <Route path="/recipes/main" element={<RecipesMain />} />
         <Route path="/recipes/all" element={<RecipesAll />} />
         <Route path="/recipes/:recipeId" element={<RecipePage />} />
-        <Route path="/recipes/surprise" element={<RecipeSurprise />} />
+        <Route path="/recipes/new" element={<RecipeNew />} />
       </Routes>
     </>
   )

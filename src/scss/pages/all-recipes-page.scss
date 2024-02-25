@@ -1,0 +1,8 @@
+@import "src/scss/components/recipes--recipe-thumbnail";
+
+.all-recipes__grid {
+  display: grid;
+  justify-content: space-between;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1rem;
+}

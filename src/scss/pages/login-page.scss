@@ -3,6 +3,15 @@
 @import "src/scss/global/media";
 @import "src/scss/global/colors";
 
+.page-BG {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("src/assets/images/eduardo-soares-NRP0iTFLzPk-unsplash.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-y: -10rem;
+}
+
 .main__login-form {
   margin-top: 4rem;
   padding: 2rem;

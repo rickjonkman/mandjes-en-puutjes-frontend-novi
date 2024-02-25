@@ -1,0 +1,138 @@
+@import "src/scss/global/colors";
+
+.recipe__main-section--instructions {
+  width: 50%;
+
+}
+
+.recipe__main-section--instructions ul {
+  display: flex;
+  flex-direction: column;
+}
+
+.recipe__main-section--instructions ul li {
+  background-color: $gray-80;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: 8px;
+}
+
+.recipe__main-section--instructions ul li h3 {
+  padding: .6rem;
+  margin-right: .8rem;
+  border: 1px solid $blue;
+  border-radius: 24px;
+}
+
+.recipe__main-section--detailed-info-right {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.recipe-page__main-section--info {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+
+.recipe-page__tags {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  background-color: $gray-70;
+  border-radius: 8px;
+
+  > li {
+    display: inline-block;
+    padding: 1rem;
+  }
+}
+
+.recipe-page__short-info {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+
+  > span {
+    padding: .2rem .8rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  > span p {
+    font-size: 1rem;
+  }
+
+  > span h3 {
+    font-size: 1rem;
+  }
+
+}
+
+.ingredients-section {
+  width: 90%;
+}
+
+.ingredients-section ul {
+  padding: .6rem;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: $orange-70;
+  border-radius: 8px;
+}
+
+.ingredients-section ul li {
+  display: inline-block;
+
+  .list-item--spacing {
+    padding: .2rem .8rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    > span > p {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    #item-amount {
+      flex: 1 2 5%;
+    }
+
+    #item-unit {
+      flex: 1 2 15%;
+    }
+
+    #item-name {
+      flex: 1 4 40%
+    }
+
+  }
+}
+
+.supplies-section {
+  width: 90%;
+}
+
+.supplies-section ul {
+  padding: .6rem;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: $orange-70;
+  border-radius: 8px;
+}
+
+.supplies-section ul li {
+  display: inline-block;
+}

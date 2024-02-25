@@ -16,7 +16,7 @@ const GroceriesMain = () => {
             <PageOuterContainer>
 
                 <Header>
-                    <NavBar />
+                    <NavBar/>
                 </Header>
 
                 <Main>
@@ -32,8 +32,9 @@ const GroceriesMain = () => {
                                     key={item.id}
                                     subject={item.subject}
                                     blockTitle={item.title}
-                                    blockSubtitle={item.subTitle}>
-                                    <Button buttonText={item.buttonText} buttonType="button"  />
+                                    blockSubtitle={item.subTitle}
+                                    buttonText={item.buttonText}
+                                    endpoint={item.endpoint}>
                                 </BlockItem>
                             ))
                         }
@@ -43,7 +44,7 @@ const GroceriesMain = () => {
 
             </PageOuterContainer>
 
-            <Footer />
+            <Footer/>
         </>
 
     );

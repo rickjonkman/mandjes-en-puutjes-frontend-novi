@@ -25,9 +25,11 @@ const LoginForm = () => {
             password: data.password,
         }
         await sendRequest(formData);
-        localStorage.setItem('token', `${responseData.data.jwtToken}`);
-        navigate("/user/dashboard");
+        localStorage.setItem('token', `${responseData.jwt}`);
+        navigate("/personal/dashboard");
     }
+
+    console.log(responseData)
 
     if (error) {
         return <ErrorPage />
@@ -50,10 +52,6 @@ const LoginForm = () => {
                         inputType="email"
                         register={register}
                         validationRules={{
-                            validate: {
-                                value: (value) => value.includes('@'),
-                                message: "Gebruikersnaam moet een email zijn."
-                            },
                             required: {
                                 value: true,
                                 message: "Gebruikersnaam is verplicht."

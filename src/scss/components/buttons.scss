@@ -32,6 +32,11 @@
   }
 }
 
+.button--icon {
+  @include button-generic;
+
+}
+
 .button__go-back {
   position: absolute;
   background: $blue;

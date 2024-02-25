@@ -3,115 +3,73 @@ import Header from "../../components/page-sections/Header.jsx";
 import NavBar from "../../components/nav/mutable/NavBar.jsx";
 import Main from "../../components/page-sections/Main.jsx";
 import PageTitle from "../../components/page-title/PageTitle.jsx";
-import useFetch from "../../hooks/UseFetch.jsx";
-import {useState} from "react";
+import {useParams} from "react-router-dom";
+import SingleRecipeComponent from "../../components/recipes/recipe-page--elements/SingleRecipeComponent.jsx";
+import {useEffect, useState} from "react";
+import useFetchRecipe from "../../hooks/useFetchRecipe.jsx";
+import Footer from "../../components/page-sections/Footer.jsx";
 
 
 const RecipePage = () => {
 
-    const { sendRequest, responseData, error, isLoading } = useFetch('');
+    const {recipeId} = useParams();
+    const fetchRecipeURL = `http://localhost:8080/api/recipes/open/${recipeId}/get`;
+    const {sendRequest, recipe} = useFetchRecipe(fetchRecipeURL);
 
-    const [recipe, setRecipe] = useState({
-        id: 0,
-        name: '',
-        servings: 0,
-        prepTime: 0,
-        tags: [
-            {tagName: ''}
-        ],
-        supplies: [],
-        ingredientMeasured: [
-            {
-                amount: 0,
-                unit: '',
-                name: '',
-            }
-        ],
-        ingredientNames: [
-            { name: '' }
-        ],
-        instructions: [
-            {
-                step: 0,
-                instruction: '',
-            }
-        ],
-        createdBy: '',
-    });
 
-    const [recipeImg, setRecipeImg] = useState({
+    useEffect(() => {
+        void sendRequest(fetchRecipeURL);
+    }, []);
 
-    })
+    console.log(recipe)
 
-    async function fetchRecipe() {
-        const response = await sendRequest();
-        setRecipe({
+    const { imageFile } = recipe;
+    const {
+        name,
+        servings,
+        prepTime,
+        tags,
+        supplies,
+        ingredientMeasured,
+        ingredientNames,
+        instructions,
+        createdBy
+    } = recipe;
 
-        })
-    }
 
     return (
-        <PageOuterContainer>
+        <>
 
-            <Header>
-                <NavBar />
-            </Header>
+            <PageOuterContainer>
 
-            <Main>
-                <PageTitle>
-                    <h1>Recipe Name</h1>
-                </PageTitle>
+                <Header>
+                    <NavBar/>
+                </Header>
 
-                <div className="recipe__top-section">
+                <Main>
+                    <PageTitle>
+                        <h1>{name}</h1>
+                    </PageTitle>
 
-                    <div className="image-wrapper">
-                        <img
-                            src=""
-                            alt=""
-                        />
-                    </div>
+                    <SingleRecipeComponent
+                        name={name}
+                        servings={servings}
+                        prepTime={prepTime}
+                        tags={tags}
+                        supplies={supplies}
+                        ingredientMeasured={ingredientMeasured}
+                        ingredientNames={ingredientNames}
+                        instructions={instructions}
+                        image={imageFile}
+                        createdBy={createdBy}
+                    />
 
-                    <div className="top-section__top-recipe-info">
+                </Main>
 
-                        <div className="top-section__tags">
+            </PageOuterContainer>
 
-                        </div>
-
-                        <div className="top-section__info">
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div className="recipe__main-section">
-
-                    <div className="recipe__main-section--instructions">
-
-                    </div>
-
-                    <div className="recipe__main-section--detailed-info-right">
-
-                        <div className="save-button--section">
-
-                        </div>
-
-                        <div className="ingredients-section">
-
-                        </div>
-
-                        <div className="supplies-section">
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </Main>
-
-        </PageOuterContainer>
+            <Footer/>
+        </>
     );
 };
 

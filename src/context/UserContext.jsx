@@ -1,91 +1,89 @@
 import {createContext, useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import useFetch from "../hooks/UseFetch.jsx";
 import {checkExpirationJWT} from "../helpers/checkExpirationJWT.js";
 import LoadingPage from "../pages/general-pages/LoadingPage.jsx";
+import axios from "axios";
 
-export const UserContext = createContext({ });
+export const UserContext = createContext({});
 
-const UserContextProvider = ({ children }) => {
+const UserContextProvider = ({children}) => {
 
     const navigate = useNavigate();
     const jwtToken = localStorage.getItem('token');
-    const fetchUserURL = 'http://localhost:8080/api/users/user/get';
-    const headerObject = {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${jwtToken}`
-    }
-
-    const { sendRequest } = useFetch(fetchUserURL);
+    const fetchUserURL = 'http://localhost:8080/api/users/user/get-user';
 
     const [authUser, setAuthUser] = useState({
         isAuth: false,
         status: 'pending',
         error: null,
-        user: null,
+        user: {
+            userId: 0,
+            username: '',
+            firstname: '',
+            enabled: false,
+            authorities: [''],
+            meat: true,
+            fish: true,
+            vegetarian: true,
+            vegan: true,
+        },
     });
 
-    const [tokenExpired, setTokenExpired] = useState(true);
-
     useEffect(() => {
-        if (checkExpirationJWT(jwtToken)) {
-            setTokenExpired(true);
-            setAuthUser({
-                isAuth: false,
-                error: 'Token is expired.',
-                user: null,
-                status: 'completed',
-            })
-            localStorage.removeItem('token');
-            navigate("/general/login");
-        } else {
-            setTokenExpired(false);
-        }
-    }, [jwtToken]);
+        if (localStorage.getItem('token')) {
 
-    useEffect(() => {
-        if (!tokenExpired) {
-            void fetchUser();
+            checkExpirationJWT();
+
+            if (checkExpirationJWT()) {
+                void fetchUser();
+            }
         } else {
-            localStorage.removeItem('token');
-            setAuthUser({
-                isAuth: false,
-                error: 'Token expired',
-                user: null,
-                status: 'completed',
-            })
             navigate("/general/login");
+            setAuthUser({
+                ...authUser,
+                status: 'completed'
+            })
         }
-    }, [tokenExpired]);
+    }, []);
 
     async function fetchUser() {
 
-        const userResponse = await sendRequest(headerObject);
-        setAuthUser({
-            setAuth: true,
-            user: {
-                userId: userResponse.data.userId,
-                username: userResponse.data.username,
-                firstname: userResponse.data.firstname,
-                enabled: userResponse.data.enabled,
-                authorities: userResponse.data.authorities,
-                meat: userResponse.data.showMeat,
-                fish: userResponse.data.showFish,
-                vegetarian: userResponse.data.showVegetarian,
-                vegan: userResponse.data.showVegan,
-            },
-            status: 'completed',
-        })
+        try {
+            const response = await axios.get(fetchUserURL, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${jwtToken}`
+                }
+            });
+            setAuthUser({
+                isAuth: true,
+                user: {
+                    username: response.data.username,
+                    firstname: response.data.firstname,
+                    enabled: response.data.enabled,
+                    authorities: response.data.authorities,
+                    meat: response.data.showMeat,
+                    fish: response.data.showFish,
+                    vegetarian: response.data.showVegetarian,
+                    vegan: response.data.showVegan,
+                },
+                status: 'completed',
+            })
+        } catch (e) {
+            console.error(e);
+        }
     }
 
 
     const userObject = {
         authUser,
+        setAuthUser,
     }
+
 
     return (
         <UserContext.Provider value={userObject}>
-            {authUser.status === 'completed' ? children : <LoadingPage /> }
+            {authUser.status === 'completed' ? children : <LoadingPage/>}
         </UserContext.Provider>
     )
 }

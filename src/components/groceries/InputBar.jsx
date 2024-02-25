@@ -2,7 +2,7 @@ import React from 'react';
 import Button from "../buttons/mutable/Button.jsx";
 import SubmitButton from "../buttons/mutable/SubmitButton.jsx";
 
-const InputBar = ({inputOnChange, inputValue, notFoundInputButton}) => {
+const InputBar = ({register, inputName, validationRules, notFoundInputButton}) => {
 
 
     return (
@@ -14,9 +14,7 @@ const InputBar = ({inputOnChange, inputValue, notFoundInputButton}) => {
                     type="text"
                     id="add-grocery--id"
                     name="add-grocery"
-                    onChange={inputOnChange}
-                    value={inputValue}
-                    placeholder="Voeg een product toe..."
+                    {...register(inputName, validationRules)}
                 />
 
                 <SubmitButton

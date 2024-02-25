@@ -40,5 +40,26 @@
 }
 
 .nav-bar__landing-page {
-  @include nav-bar--generic
+  margin-top: 1rem;
+  padding: 1rem;
+  width: 100%;
+  background-color: $gray-80;
+  border-radius: 8px;
+
+  .nav-bar__landing-page--links ul {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .nav-bar__landing-page--links ul li {
+    display: inline-block;
+  }
+
+  > .nav-bar__links-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
+
+

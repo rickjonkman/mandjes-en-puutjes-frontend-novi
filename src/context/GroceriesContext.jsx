@@ -1,68 +1,75 @@
 import {createContext, useEffect, useState} from "react";
-import RecipePage from "../pages/recipes-pages/RecipePage.jsx";
-import GroceriesListsPage from "../pages/groceries-pages/GroceriesListsPage.jsx";
-import GroceriesShoppingMode from "../pages/groceries-pages/GroceriesShoppingMode.jsx";
+import axios from "axios";
 
-import useFetch from "../hooks/UseFetch.jsx";
+export const GroceriesContext = createContext({});
 
-export const GroceriesContext = createContext({ });
-
-const GroceriesContextProvider = () => {
+const GroceriesContextProvider = ({ children }) => {
 
     const jwtToken = localStorage.getItem('token');
-    const fetchRecentListsURL = 'http://localhost:8080/api/users/shopping-list/get-recent-lists';
-    const fetchCurrentListURL = 'http://localhost:8080/api/users/shopping-list/get-current-list';
-    const headerObject = {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${jwtToken}`
-    }
+    const fetchRecentShoppingListsURL = 'http://localhost:8080/api/users/shopping-list/get-recent-lists';
+    const fetchCurrentShoppingListURL = 'http://localhost:8080/api/users/shopping-list/get-current-list';
 
-    const { sendRequest } = useFetch(fetchRecentListsURL, fetchCurrentListURL);
-
-
-    const [currentShoppingList, setCurrentShoppingList] = useState({});
     const [recentShoppingLists, setRecentShoppingLists] = useState([]);
-    const [groceries, setGroceries] = useState([
-        { groceryName: '', }
-    ]);
+    const [currentShoppingList, setCurrentShoppingList] = useState({
+        id: 0,
+        groceries: [
+            {grocery: ''}
+        ]
+    });
 
     useEffect(() => {
-        void fetchRecentLists()
+        void fetchCurrentShoppingList;
     }, []);
 
     useEffect(() => {
-        void fetchCurrentShoppingList()
+        void fetchRecentShoppingLists();
     }, []);
-
-    async function fetchRecentLists() {
-
-        const response = await sendRequest(headerObject);
-        setRecentShoppingLists(response.data);
-    }
 
     async function fetchCurrentShoppingList() {
 
-        const response = await sendRequest(headerObject);
-        setCurrentShoppingList(response.data);
+        try {
+            const response = await axios.get(fetchCurrentShoppingListURL, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${jwtToken}`
+                }
+            })
+            setCurrentShoppingList(response)
 
+        } catch (e) {
+            console.error(e);
+        }
     }
+
+    async function fetchRecentShoppingLists() {
+
+        try {
+            const response = await axios.get(fetchRecentShoppingListsURL, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${jwtToken}`
+                }
+            })
+            console.log(response)
+            setRecentShoppingLists(response.data);
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+    console.log(recentShoppingLists)
 
 
     const groceriesObject = {
         currentShoppingList,
-        setCurrentShoppingList,
         recentShoppingLists,
-        setRecentShoppingLists,
-        groceries,
-        setGroceries,
-        headerObject,
     }
+
+    console.log(currentShoppingList)
 
     return (
         <GroceriesContext.Provider value={groceriesObject}>
-            <RecipePage />
-            <GroceriesListsPage />
-            <GroceriesShoppingMode />
+            {children}
         </GroceriesContext.Provider>
     )
 }

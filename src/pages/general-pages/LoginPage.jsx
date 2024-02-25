@@ -9,21 +9,23 @@ const LoginPage = () => {
     const navigate = useNavigate();
 
     return (
-        <PageOuterContainer>
+        <div className="page-BG">
+            <PageOuterContainer>
 
-            <Main>
+                <Main>
 
-                <div className="go-back">
-                    <ButtonTransitionEffect buttonClickHandler={() => navigate("/")}/>
-                </div>
+                    <div className="go-back">
+                        <ButtonTransitionEffect buttonClickHandler={() => navigate("/")}/>
+                    </div>
 
-                <div className="main__login-form">
-                    <LoginForm/>
-                </div>
+                    <div className="main__login-form">
+                        <LoginForm/>
+                    </div>
 
-            </Main>
+                </Main>
 
-        </PageOuterContainer>
+            </PageOuterContainer>
+        </div>
     );
 };
 

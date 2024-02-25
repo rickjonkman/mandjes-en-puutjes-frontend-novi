@@ -3,26 +3,38 @@ import Button from "../buttons/mutable/Button.jsx";
 import {useNavigate} from "react-router-dom";
 import InputBar from "./InputBar.jsx";
 import usePost from "../../hooks/UsePost.jsx";
+import axios from "axios";
+import {useForm} from "react-hook-form";
 
 const NoListsFound = ({pathname}) => {
 
-    const jwtToken = localStorage.getItem('token');
-
-    const navigate = useNavigate();
-    const { sendRequest } = usePost('http://localhost:8080/api/users/shopping-list/add-new', {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${jwtToken}`
+    const postUrl = 'http://localhost:8080/api/users/shopping-list/add-new';
+    const {register, handleSubmit} = useForm({
+        defaultValues: {
+            groceries: [
+                {
+                    grocery: '',
+                }
+            ]
+        }
     })
 
-    const [groceryInputValue, setGroceryInputValue] = useState('');
+    const navigate = useNavigate();
 
-    async function handleSubmit(e) {
-        e.preventDefault();
+    async function handleFormSubmit(data) {
 
-        await sendRequest(e);
+
+        try {
+            const response = await axios.post(postUrl, data)
+            console.log(response)
+        } catch (e) {
+            console.error(e);
+        }
+
     }
 
-    //TODO: submithandler
+
+
 
     return (
         <div className="groceries__nothing-found">
@@ -54,11 +66,13 @@ const NoListsFound = ({pathname}) => {
 
                     <h2>Maak een nieuwe boodschappenlijst aan</h2>
 
-                    <InputBar
-                        inputValue={groceryInputValue}
-                        inputOnChange={(e) => setGroceryInputValue(e.target.value)}
-                        notFoundInputButton={(e) => handleSubmit(e)}
-                    />
+                    <form onSubmit={handleSubmit(handleFormSubmit)}>
+                        <InputBar
+                            inputName="grocery"
+                            register={register}
+
+                        />
+                    </form>
 
                 </div>
             }

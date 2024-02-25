@@ -6,6 +6,7 @@ export const recipeMainItems = [
         title: 'Bekijk alle recepten',
         subTitle: 'Doe hier je inspiratie op voor je volgende recept',
         buttonText: 'Ga naar alle recepten',
+        endpoint: "/recipes/all"
     },
     {
         id: 2,
@@ -13,6 +14,7 @@ export const recipeMainItems = [
         title: 'Verrassingsrecept',
         subTitle: 'Benieuwd naar je verrassingsrecept van vandaag?',
         buttonText: 'Ga naar verrassingsrecept',
+        endpoint: "/recipes/surprise",
     },
     {
         id: 3,
@@ -20,6 +22,7 @@ export const recipeMainItems = [
         title: 'Voeg een nieuw recept toe',
         subTitle: 'Voeg hier je eigen recept toe',
         buttonText: 'Ga naar toevoegen',
+        endpoint: "/recipes/new",
     },
 ]
 

@@ -1,11 +1,11 @@
-
-const Form = ({ formSubmit, formTitle, children }) => {
-
+const Form = ({formSubmit, formTitle, children}) => {
 
 
     return (
         <form className="form" onSubmit={formSubmit}>
-            <h1>{formTitle}</h1>
+            <div className="form__title--bg">
+                <h1>{formTitle}</h1>
+            </div>
             {children}
         </form>
     );

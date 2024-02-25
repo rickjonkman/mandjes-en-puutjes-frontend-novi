@@ -6,6 +6,7 @@ export const groceryMainItems = [
         title: 'Bekijk nieuwe lijst',
         subTitle: 'Bekijk je nieuwe boodschappenlijst in winkelmodus',
         buttonText: 'Ga naar nieuwe lijst',
+        endpoint: "/groceries/shopping-mode",
     },
     {
         id: 2,
@@ -13,5 +14,6 @@ export const groceryMainItems = [
         title: 'Bekijk je recente lijsten',
         subTitle: 'Beheer hier al je meest recente boodschappenlijsten',
         buttonText: 'Ga naar recente lijsten',
+        endpoint: "/groceries/lists",
     },
 ]
